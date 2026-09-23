@@ -1,0 +1,488 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichterSat Tecnologia LTDA — Catálogo & Soluções</title>
+    <style>
+        :root {
+            --primary-color: #004085;
+            --secondary-color: #0056b3;
+            --accent-color: #25d366;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #002752;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb854;
+        }
+
+        .about-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .about-box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .setores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .setor-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .setor-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .section-header {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            margin: 2.5rem 0 1.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .catalog-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .catalog-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .contato-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: .5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            background-color: #e9ecef;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>RichterSat Tecnologia LTDA</h1>
+        <p>Soluções Integradas em Tecnologia, Energia Solar, Ferramentas e Equipamentos</p>
+        <a href="https://wa.me/5551999698807" class="btn-whatsapp" target="_blank">
+            💬 Falar no WhatsApp: (51) 99969-8807
+        </a>
+    </header>
+
+    <nav>
+        <a href="#sobre">Sobre a Empresa</a>
+        <a href="#setores">Setores & Contato</a>
+        <a href="#elevi">Linha Elevi</a>
+        <a href="#vibor">Linha ViBor</a>
+        <a href="#orcamento">Solicitar Orçamento</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- APRESENTAÇÃO DA EMPRESA -->
+        <div id="sobre" class="about-box">
+            <h2>Apresentação Institucional</h2>
+            <p>A <strong>RichterSat Tecnologia LTDA</strong> oferece soluções completas e integradas em energia solar, conectividade, segurança, ferramentas de oficina e equipamentos industriais[cite: 1.2].</p>
+            <p>Acreditamos em uma alternativa sustentável, mais limpa e econômica para a geração e distribuição de energia[cite: 1.2]. Oferecemos projetos completos de sistemas fotovoltaicos on-grid[cite: 1.2], com tecnologia homologada pelo INMETRO[cite: 1.2] e em parceria com marcas líderes como o <strong>Grupo Intelbras</strong>[cite: 1.2, 1.3], garantindo a máxima eficiência, monitoramento em tempo real por aplicativo e suporte especializado[cite: 1.2, 1.3].</p>
+            <p>Além das soluções energéticas e de conectividade[cite: 1.2, 1.3], atuamos como revenda e distribuidora da linha completa de ferramentas hidráulicas de elevação (Elevi) e componentes para borracharia e válvulas industriais (ViBor).</p>
+        </div>
+
+        <!-- SEÇÃO DE SETORES E CONTATOS -->
+        <h2 id="setores" class="section-header">Setores da Empresa & Atendimento</h2>
+        <div class="setores-grid">
+            <div class="setor-card">
+                <h3>🏬 Comercial & Vendas</h3>
+                <p>Solicitação de orçamentos, cotação de ferramentas, equipamentos e projetos[cite: 1.2].</p>
+                <p><strong>E-mail:</strong> luis.serrana@gmail.com</p>
+                <p><strong>WhatsApp:</strong> (51) 99969-8807[cite: 1.2]</p>
+            </div>
+            <div class="setor-card">
+                <h3>🛠️ Suporte Técnico & Agendamentos</h3>
+                <p>Projetos, instalações, suporte técnico e agendamento de serviços[cite: 1.2].</p>
+                <p><strong>Atendimento:</strong> (51) 98574-2283</p>
+            </div>
+            <div class="setor-card">
+                <h3>📍 Dados Cadastrais</h3>
+                <p><strong>Razão Social:</strong> RichterSat Tecnologia LTDA</p>
+                <p><strong>CNPJ:</strong> 36.549.300/0001-71</p>
+                <p><strong>Localização:</strong> Guaíba / RS[cite: 1.2]</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO ELEVI: PÁGINAS 01 A 67 -->
+        <h2 id="elevi" class="section-header">Elevação e Equipamentos Hidráulicos (Elevi) — Páginas 01 a 67</h2>
+        <div class="catalog-grid">
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0061.jpg" alt="Página 61 - Macacos Hidráulicos">
+                <div class="card-content">
+                    <h3>Página 61</h3>
+                    <p>Macacos Hidráulicos Garrafa, Jacaré e Telescópico</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0062.jpg" alt="Página 62 - Elevadores e Suportes">
+                <div class="card-content">
+                    <h3>Página 62</h3>
+                    <p>Macacos de Transmissão, Elevadores de Moto e Suportes</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0063.jpg" alt="Página 63 - Talhas e Guinchos">
+                <div class="card-content">
+                    <h3>Página 63</h3>
+                    <p>Talhas Manuais, Elétricas, Trolley e Guinchos de Coluna</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0064.jpg" alt="Página 64 - Guinchos Elétricos">
+                <div class="card-content">
+                    <h3>Página 64</h3>
+                    <p>Guinchos Elétricos 12V e 24V (Cabo de Aço e Sintético)</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0065.jpg" alt="Página 65 - Acessórios de Guincho">
+                <div class="card-content">
+                    <h3>Página 65</h3>
+                    <p>Caixas Solenóide, Controles Sem Fio e Cabos Kevlar</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0066.jpg" alt="Página 66 - Prensas e Guinchos Girafa">
+                <div class="card-content">
+                    <h3>Página 66</h3>
+                    <p>Guinchos Hidráulicos, Cavaletes e Prensas Hidráulicas</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0067.jpg" alt="Página 67 - Desforcímetros e Soquetes">
+                <div class="card-content">
+                    <h3>Página 67</h3>
+                    <p>Desforcímetros, Soquetes de 1" e Catracas Manuais</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEÇÃO VIBOR: PÁGINAS 68 A 80 -->
+        <h2 id="vibor" class="section-header">Borracharia e Válvulas (ViBor) — Páginas 68 a 80</h2>
+        <div class="catalog-grid">
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0068.jpg" alt="Página 68 - Apresentação ViBor">
+                <div class="card-content">
+                    <h3>Página 68</h3>
+                    <p>Capa e Apresentação da Linha ViBor</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0069.jpg" alt="Página 69 - Reparo de Pneus">
+                <div class="card-content">
+                    <h3>Página 69</h3>
+                    <p>Aplicadores, Escariadores, Agulhas e Insertos (Macarrão)</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0070.jpg" alt="Página 70 - Calibradores">
+                <div class="card-content">
+                    <h3>Página 70</h3>
+                    <p>Calibradores Portáteis, Bico Duplo e Analógicos/Digitais</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0071.jpg" alt="Página 71 - Bicos Infladores e Medidores">
+                <div class="card-content">
+                    <h3>Página 71</h3>
+                    <p>Medidor Digital 150 PSI, Bicos Infladores e Medidores de Profundidade</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0072.jpg" alt="Página 72 - Ferramentas de Borracharia">
+                <div class="card-content">
+                    <h3>Página 72</h3>
+                    <p>Tarraxas, Chaves Saca Núcleo, Compressores de Mola e Alicates</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0073.jpg" alt="Página 73 - Conexões e Engates">
+                <div class="card-content">
+                    <h3>Página 73</h3>
+                    <p>Engates Rápidos, Pinos Conectores e Emendas Duplas</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0074.jpg" alt="Página 74 - Terminais e Extensões">
+                <div class="card-content">
+                    <h3>Página 74</h3>
+                    <p>Terminais de Bateria, Extensões e Mangueira Espiral PU</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0075.jpg" alt="Página 75 - Válvulas Agrícolas e Passeio">
+                <div class="card-content">
+                    <h3>Página 75</h3>
+                    <p>Válvulas TR-220A, TR-218A, TR-13, TR-15, TR-414 e TR-415</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0076.jpg" alt="Página 76 - Válvulas TPMS e Motos">
+                <div class="card-content">
+                    <h3>Página 76</h3>
+                    <p>Válvulas TPMS, Motocicletas (TR-412) e Válvulas Curvas</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0077.jpg" alt="Página 77 - Válvulas Caminhões e Ônibus">
+                <div class="card-content">
+                    <h3>Página 77</h3>
+                    <p>Válvulas de Carga Pesada 27°, TR-574L e V3.22.1</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0078.jpg" alt="Página 78 - Válvulas Jumbo">
+                <div class="card-content">
+                    <h3>Página 78</h3>
+                    <p>Válvulas Linha Jumbo Off-Road e Válvulas para Bicicleta</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0079.jpg" alt="Página 79 - Núcleos e Redutores">
+                <div class="card-content">
+                    <h3>Página 79</h3>
+                    <p>Núcleos de Válvula, Redutores Jumbo e Válvulas para Câmara</p>
+                </div>
+            </div>
+
+            <div class="catalog-card">
+                <img src="Catalogo VA Importacao (1)_page-0080.jpg" alt="Página 80 - Tampas para Válvulas">
+                <div class="card-content">
+                    <h3>Página 80</h3>
+                    <p>Tampas Sextavadas, com Chaveta Saca Núcleo e Plásticas</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FORMULÁRIO DE ORÇAMENTO -->
+        <h2 id="orcamento" class="section-header">Solicitar Orçamento / Contato</h2>
+        <div class="contato-form">
+            <form action="mailto:luis.serrana@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="nome">Nome Completo / Empresa:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome ou empresa">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail de Contato:</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="text" id="telefone" name="telefone" required placeholder="(51) 99999-9999">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Produtos de Interesse / Código da Página:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva os produtos ou códigos que deseja cotar..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Pedido de Orçamento</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; RichterSat Tecnologia LTDA (CNPJ: 36.549.300/0001-71) — Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
