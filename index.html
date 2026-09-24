@@ -1,0 +1,625 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichterSat Tecnologia LTDA — Soluções e Catálogos</title>
+    <style>
+        :root {
+            --primary-color: #004085;
+            --secondary-color: #0056b3;
+            --accent-color: #25d366;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            margin-bottom: 1rem;
+        }
+
+        .logo-container img {
+            max-width: 220px;
+            height: auto;
+            border-radius: 6px;
+            background-color: #fff;
+            padding: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #002752;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a, nav button {
+            color: #ffffff;
+            background: none;
+            border: none;
+            font-family: inherit;
+            text-decoration: none;
+            margin: 0 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav button:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb854;
+        }
+
+        .about-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .about-box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .about-box p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .setores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .setor-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .setor-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .section-header {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            margin: 2.5rem 0 1.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .catalog-section {
+            display: none;
+        }
+
+        .catalog-section.active {
+            display: block;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .catalog-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .catalog-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .btn-view {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-view:hover {
+            background-color: var(--primary-color);
+        }
+
+        #modalZoom {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        #modalZoom img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        #modalZoom .fechar-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #modalZoom .fechar-modal:hover {
+            color: #ffc107;
+        }
+
+        .seguranca-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .selo-topo {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .selo-topo:hover {
+            transform: scale(1.02);
+        }
+
+        .destaque-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .destaque-box {
+            background: linear-gradient(135deg, #003366, #004085);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .destaque-box h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .btn-destaque {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #212529;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn-destaque:hover {
+            background-color: #e0a800;
+        }
+
+        .contato-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: .5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            background-color: #e9ecef;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+    <script>
+        function mostrarSecao(secaoId) {
+            document.querySelectorAll('.catalog-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            const alvo = document.getElementById(secaoId);
+            if (alvo) {
+                alvo.classList.add('active');
+                alvo.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function abrirZoom(urlImagem) {
+            document.getElementById('imgModal').src = urlImagem;
+            document.getElementById('modalZoom').style.display = 'block';
+        }
+
+        function fecharZoom() {
+            document.getElementById('modalZoom').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+
+    <div id="modalZoom">
+        <span class="fechar-modal" onclick="fecharZoom()">&times;</span>
+        <img id="imgModal" src="" alt="Ampliação da Imagem">
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="logotipo melhorado.jpg" alt="RichterSat Tecnologia LTDA">
+        </div>
+        <h1>RichterSat Tecnologia LTDA</h1>
+        <p>Soluções Integradas em Energia Solar e Tecnologia</p>
+        <a href="https://wa.me/5551998818084" class="btn-whatsapp" target="_blank">
+            💬 Falar no WhatsApp: (51) 99881-8084
+        </a>
+    </header>
+
+    <nav>
+        <a href="#sobre">Apresentação</a>
+        <a href="#setores">Setores & Contato</a>
+        <button onclick="mostrarSecao('solar')">☀️ Energia Solar</button>
+        <button onclick="mostrarSecao('cftv')">📷 CFTV / Segurança</button>
+        <button onclick="mostrarSecao('elevi')">Linha Elevi</button>
+        <button onclick="mostrarSecao('vibor')">📦 Produtos Vilubri</button>
+        <a href="#orcamento">Solicitar Orçamento</a>
+    </nav>
+
+    <div class="container">
+
+        <div id="sobre" class="about-box">
+            <h2>1. Apresentação Institucional</h2>
+            <p>Acreditamos em uma alternativa sustentável, mais limpa e econômica para a obtenção de energia elétrica. Oferecemos soluções completas em sistemas fotovoltaicos para residências, comércios, indústrias, escolas, entre outros. Os sistemas fotovoltaicos são capazes de gerar energia elétrica conectada com a rede pública, gerando, através da Compensação de Energia Distribuída, créditos na fatura.</p>
+            <p><strong>Diferencial Intelbras:</strong> Com parceria com a líder <strong>Grupo Intelbras</strong>, levamos uma marca com mais de 40 anos de mercado, oferecendo máxima segurança, eficiência e qualidade comprovada. Os inversores possuem interface Wi-Fi e aplicativo exclusivo para o cliente acompanhar em tempo real a geração diária, mensal e anual de energia diretamente no celular ou computador.</p>
+            <p>Além da energia solar, a <strong>RichterSat Tecnologia LTDA</strong> atua na distribuição e fornecimento de ferramentas industriais, equipamentos hidráulicos de elevação, acessórios especializados para borracharia e portfólio completo em tecnologia e segurança Intelbras.</p>
+        </div>
+
+        <div class="destaque-container">
+            <div class="destaque-box" style="background: linear-gradient(135deg, #d35400, #e67e22);">
+                <h3>Energia Solar</h3>
+                <p>Sistemas fotovoltaicos e inversores eficientes.</p>
+                <button onclick="mostrarSecao('solar')" class="btn-destaque">☀️ Ver Solar</button>
+            </div>
+            <div class="destaque-box" style="background: linear-gradient(135deg, #002b49, #004085);">
+                <h3>CFTV & Segurança</h3>
+                <p>Câmeras e sistemas de monitoramento.</p>
+                <button onclick="mostrarSecao('cftv')" class="btn-destaque">📷 Ver CFTV</button>
+            </div>
+            <div class="destaque-box">
+                <h3>Linha Elevi</h3>
+                <p>Equipamentos de elevação e ferramentas.</p>
+                <button onclick="mostrarSecao('elevi')" class="btn-destaque">🔍 Ver Elevi</button>
+            </div>
+            <div class="destaque-box" style="background: linear-gradient(135deg, #1b4d3e, #2e8b57);">
+                <h3>Produtos Vilubri</h3>
+                <p>Borracharia, válvulas e acessórios.</p>
+                <button onclick="mostrarSecao('vibor')" class="btn-destaque">📦 Ver Vilubri</button>
+            </div>
+        </div>
+
+        <h2 id="setores" class="section-header">Setores da Empresa & E-mails Corporativos</h2>
+        <div class="setores-grid">
+            <div class="setor-card">
+                <h3>🏬 Comercial & Vendas</h3>
+                <p>Orçamentos, cotações e propostas.</p>
+                <p><strong>E-mail:</strong> richtersatrs@gmail.com</p>
+                <p><strong>WhatsApp:</strong> (51) 99881-8084</p>
+            </div>
+            <div class="setor-card">
+                <h3>🛠️ Suporte Técnico & Projetos</h3>
+                <p>Instalações, suporte e agendamentos.</p>
+                <p><strong>E-mail:</strong> luis.serrana@gmail.com</p>
+                <p><strong>Atendimento:</strong> (51) 99881-8084</p>
+            </div>
+            <div class="setor-card">
+                <h3>📍 Dados Cadastrais</h3>
+                <p><strong>Razão Social:</strong> RichterSat Tecnologia LTDA</p>
+                <p><strong>CNPJ:</strong> 36.549.300/0001-71</p>
+                <p><strong>Localização:</strong> Guaíba / RS</p>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO SOLAR (solar01.jpeg a solar26.jpeg) -->
+        <div id="solar" class="catalog-section">
+            <div class="seguranca-container" style="margin-bottom: 2rem;">
+                <img src="selo-intelbras.jpg" alt="Selo Intelbras" class="selo-topo" onclick="abrirZoom('selo-intelbras.jpg')" title="Clique para ampliar o selo">
+                <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0;">(Clique no selo acima para ampliar)</p>
+            </div>
+            <h2 class="section-header">Sistemas de Energia Solar (solar01 a solar26)</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 1; i <= 26; i++) {
+                        let numStr = i < 10 ? '0' + i : i;
+                        let fileName = `solar${numStr}.jpeg`; 
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="Solar ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='solar${numStr}.JPG';">
+                                <div class="card-content">
+                                    <h3>Solução Solar ${i}</h3>
+                                    <p>Tecnologia e Eficiência Fotovoltaica</p>
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ver Ampliado</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO CFTV (cftv01.jpeg a cftv10.jpeg) -->
+        <div id="cftv" class="catalog-section">
+            <h2 class="section-header">Câmeras e CFTV (cftv01 a cftv10)</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 1; i <= 10; i++) {
+                        let numStr = i < 10 ? '0' + i : i;
+                        let fileName = `cftv${numStr}.jpeg`; 
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="CFTV ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='cftv${numStr}.JPG';">
+                                <div class="card-content">
+                                    <h3>Equipamento CFTV ${i}</h3>
+                                    <p>Monitoramento e Segurança</p>
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ver Ampliado</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO ELEVI (Páginas 01 a 67) -->
+        <div id="elevi" class="catalog-section">
+            <h2 class="section-header">Elevação e Equipamentos Hidráulicos (Elevi) — Páginas 01 a 67</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 1; i <= 67; i++) {
+                        let fileName = `catalogo${i}.jpg`; 
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="Página ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='catalogo${i}.JPG';">
+                                <div class="card-content">
+                                    <h3>Página ${i}</h3>
+                                    <p>Linha Elevi - Equipamentos</p>
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ver Especificações</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO VILUBRI (Páginas 68 a 80) -->
+        <div id="vibor" class="catalog-section">
+            <h2 class="section-header">Produtos Vilubri (Borracharia e Válvulas) — Páginas 68 a 80</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 68; i <= 80; i++) {
+                        let fileName = `catalogo${i}.jpg`;
+                        let desc = "Linha ViBor / ViLubri - Acessórios e Válvulas";
+                        if(i === 68) desc = "Capa e Apresentação da Linha ViBor / ViLubri";
+                        if(i === 69) desc = "Aplicadores, Escariadores, Agulhas e Insertos";
+                        if(i === 70) desc = "Calibradores Portáteis e Bico Duplo";
+                        if(i === 71) desc = "Medidores Digitais e Bicos Infladores";
+                        if(i === 72) desc = "Tarraxas, Chaves Saca Núcleo e Alicates";
+                        if(i === 73) desc = "Engates Rápidos e Conectores";
+                        if(i === 74) desc = "Terminais de Bateria e Mangueiras";
+                        if(i === 75) desc = "Válvulas Agrícolas e de Passeio";
+                        if(i === 76) desc = "Válvulas TPMS e Motocicletas";
+                        (i === 77) ? desc = "Válvulas de Carga Pesada (Caminhões e Ônibus)" : null;
+                        if(i === 78) desc = "Válvulas Jumbo Off-Road e Bicicleta";
+                        if(i === 79) desc = "Núcleos de Válvula e Redutores";
+                        if(i === 80) desc = "Tampas para Válvulas";
+
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="Página ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='catalogo${i}.JPG';">
+                                <div class="card-content">
+                                    <h3>Página ${i}</h3>
+                                    <p>${desc}</p>
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ver Especificações</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <h2 id="orcamento" class="section-header">Solicitar Orçamento / Contato</h2>
+        <div class="contato-form">
+            <form action="mailto:richtersatrs@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="nome">Nome Completo / Empresa:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome ou empresa">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail de Contato:</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="text" id="telefone" name="telefone" required placeholder="(51) 99881-8084">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Produtos de Interesse / Código da Página:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva os produtos ou códigos que deseja cotar..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Pedido de Orçamento</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; RichterSat Tecnologia LTDA (CNPJ: 36.549.300/0001-71) — Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
