@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichterSat Tecnologia LTDA — Soluções e Catálogos</title>
+    <style>
+        :root {
+            --primary-color: #004085;
+            --secondary-color: #0056b3;
+            --accent-color: #25d366;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* CABEÇALHO COM BANNER DE FUNDO */
+        header {
+            position: relative;
+            background-image: url('capa.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 3.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Camada escura por cima da foto para destacar os textos */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        /* Garante que o conteúdo fique acima da camada escura */
+        header .logo-container, 
+        header h1, 
+        header p, 
+        header .btn-whatsapp {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            margin-bottom: 1rem;
+            display: inline-block;
+            background-color: #000000;
+            padding: 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .logo-container img {
+            max-width: 220px;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.4rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.15rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            opacity: 0.95;
+        }
+
+        nav {
+            background-color: #002752;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a, nav button {
+            color: #ffffff;
+            background: none;
+            border: none;
+            font-family: inherit;
+            text-decoration: none;
+            margin: 0 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav button:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb854;
+        }
+
+        .about-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .about-box h2, .about-box h3 {
+            color: var(--primary-color);
+            margin-top: 1.8rem;
+        }
+
+        .about-box h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .about-box p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .setores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .setor-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .setor-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .section-header {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            margin: 2.5rem 0 1.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .catalog-section {
+            display: none;
+        }
+
+        .catalog-section.active {
+            display: block;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .catalog-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .catalog-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .btn-view {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-view:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* MODAL DE ZOOM - QUASE TELA CHEIA */
+        #modalZoom {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            text-align: center;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modalZoom.ativo {
+            display: flex;
+        }
+
+        .modal-conteudo-wrapper {
+            position: relative;
+            max-width: 98%;
+            max-height: 98vh;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modalZoom img {
+            max-width: 100%;
+            max-height: 96vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 25px rgba(255,255,255,0.2);
+        }
+
+        #modalZoom .fechar-modal {
+            position: fixed;
+            top: 15px;
+            right: 25px;
+            color: #ffffff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.5);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        #modalZoom .fechar-modal:hover {
+            color: #ffc107;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .seguranca-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .selo-topo {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .selo-topo:hover {
+            transform: scale(1.02);
+        }
+
+        .destaque-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .destaque-box {
+            background: linear-gradient(135deg, #003366, #004085);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .destaque-box h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .btn-destaque {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #212529;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn-destaque:hover {
+            background-color: #e0a800;
+        }
+
+        .contato-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: .5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            background-color: #e9ecef;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+    <script>
+        function mostrarSecao(secaoId) {
+            document.querySelectorAll('.catalog-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            const alvo = document.getElementById(secaoId);
+            if (alvo) {
+                alvo.classList.add('active');
+                alvo.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function abrirZoom(urlImagem) {
+            document.getElementById('imgModal').src = urlImagem;
+            document.getElementById('modalZoom').classList.add('ativo');
+        }
+
+        function fecharZoom() {
+            document.getElementById('modalZoom').classList.remove('ativo');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalZoom');
+            if (event.target === modal) {
+                fecharZoom();
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="modalZoom">
+        <span class="fechar-modal" onclick="fecharZoom()">&times;</span>
+        <div class="modal-conteudo-wrapper">
+            <img id="imgModal" src="" alt="Ampliação da Imagem">
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="logotipo melhorado.jpg" alt="RichterSat Tecnologia LTDA">
+        </div>
+        <h1>RichterSat Tecnologia LTDA</h1>
+        <p>Soluções Integradas em Energia Solar e Tecnologia</p>
+        <a href="https://wa.me/5551998818084" class="btn-whatsapp" target="_blank">
+            💬 Falar no WhatsApp: (51) 99881-8084
+        </a>
+    </header>
+
+    <nav>
+        <a href="#sobre">Apresentação</a>
+        <a href="#setores">Setores & Contato</a>
+        <button onclick="mostrarSecao('solar')">☀️ Energia Solar</button>
+        <button onclick="mostrarSecao('cftv')">📷 CFTV / Segurança</button>
+        <button onclick="mostrarSecao('vibor')">📦 Produtos Vilubri</button>
+        <a href="#orcamento">Solicitar Orçamento</a>
+    </nav>
+
+    <div class="container">
+
+        <div id="sobre" class="about-box">
+            <h2>A História da RichterSat</h2>
+            <p>Meu nome é <strong>Luis Einar Ericksson Richter</strong>, tenho 45 anos e sou o empreendedor responsável pela <strong>RichterSat Tecnologia LTDA</strong>, empresa localizada em Guaíba/RS. Nossa presença nas redes sociais pode ser acompanhada pelo Instagram <strong>@richter.sat</strong>.</p>
+            
+            <p>A RichterSat nasceu em março de 2020, justamente quando o Brasil e o mundo começavam a enfrentar a pandemia de COVID-19. A ideia surgiu da oportunidade de trabalhar com tecnologia e conectividade, inicialmente através do projeto HughesNet, levando internet via satélite para clientes que precisavam de conexão, principalmente em locais onde a internet convencional não chegava ou não oferecia uma solução adequada.</p>
+            
+            <p>Começar uma empresa naquele momento foi um grande desafio. Enquanto muitos negócios precisavam fechar suas portas, nós precisávamos encontrar maneiras de continuar trabalhando e conquistando clientes. Mesmo diante das dificuldades da pandemia, fomos crescendo e ampliando nossa atuação.</p>
+
+            <p>Durante nossa trajetória, a RichterSat se tornou Integrador Intelbras, passando a trabalhar também com soluções de segurança eletrônica e infraestrutura tecnológica. Realizamos dezenas de instalações de sistemas de CFTV e controle de acesso, atendendo clientes que buscavam mais segurança para suas residências, empresas e estabelecimentos comerciais.</p>
+
+            <p>Também entramos no mercado de energia solar fotovoltaica, projetando, vendendo e instalando aproximadamente 20 usinas fotovoltaicas. Dessa forma, a RichterSat passou a oferecer diferentes soluções de tecnologia: conectividade, redes, segurança eletrônica, CFTV, controle de acesso e energia solar.</p>
+
+            <p>Em determinado momento da pandemia, acreditamos que o mercado começaria a voltar ao normal e decidimos dar um passo maior. Alugamos uma loja para estruturar a empresa e ampliar nosso atendimento. Porém, pouco depois veio um novo lockdown. A loja ficou fechada durante um longo período e, mesmo sem poder funcionar normalmente, continuamos pagando aluguel e mantendo os custos da estrutura. Foram anos de muita dificuldade, mas também de muito aprendizado sobre empreendedorismo, administração e, principalmente, sobre a necessidade de persistir.</p>
+
+            <p>Em 2023, quando a pandemia começou finalmente a perder força e o comércio voltou a melhorar, começamos novamente a prospectar clientes e desenvolver novos projetos. Parecia que estávamos entrando em uma nova fase. Mas, em 2024, o Rio Grande do Sul enfrentou uma das maiores enchentes de sua história. A tragédia afetou famílias, empresas e toda a economia da região. Projetos que estávamos buscando foram perdidos ou interrompidos, clientes também tiveram suas próprias dificuldades e a RichterSat acabou entrando novamente em um período de paralisação. Nossa documentação empresarial ficou inativa e tivemos que colocar os projetos em espera. Mas não desistimos.</p>
+
+            <p>Em 2026, começamos novamente o processo de reativação da RichterSat e estamos retomando a busca por clientes, fornecedores, parceiros e novos mercados. E essa retomada já começou com novidades importantes. Recentemente, fechamos uma parceria com uma distribuidora da Starlink, ampliando nossa atuação na área de conectividade e abrindo novas possibilidades para clientes que precisam de internet via satélite. Também firmamos parceria com a Fábrica Vilubri, para trabalhar com a revenda de seus produtos em nossa região.</p>
+
+            <p>Hoje, nosso trabalho é justamente identificar as necessidades dos clientes e buscar soluções adequadas em tecnologia, conectividade, segurança e energia. Atendemos tanto clientes residenciais quanto empresas, sempre procurando oferecer não apenas um produto, mas uma solução completa, com orientação, instalação e suporte.</p>
+
+            <h3>Nosso Maior Sonho</h3>
+            <p>Meu maior sonho é fazer a RichterSat voltar a crescer e se tornar uma empresa reconhecida na nossa região pela qualidade das soluções que oferece. Quero transformar tudo o que aprendemos nesses anos em uma empresa mais estruturada, capaz de gerar renda, criar oportunidades de trabalho e construir uma carteira sólida de clientes. Mais do que recuperar o que perdemos, quero construir uma RichterSat ainda maior do que aquela que existia antes da enchente.</p>
+
+            <h3>O que o empreendedorismo trouxe?</h3>
+            <p>Empreender me trouxe experiência que nenhum curso conseguiria ensinar sozinho. Aprendi a lidar com clientes, fornecedores, problemas técnicos, vendas, negociação, custos e, principalmente, com situações inesperadas. Também aprendi que empreender não significa apenas ganhar dinheiro. Significa ter capacidade de se adaptar quando tudo muda. A pandemia nos ensinou isso. Os lockdowns nos ensinaram isso. A enchente de 2024 nos ensinou isso. E agora, em 2026, estamos colocando esse aprendizado em prática para reconstruir a empresa. Uma das maiores conquistas foi justamente não ter desistido. A RichterSat passou por momentos em que seria muito mais fácil simplesmente abandonar o projeto. Mas continuamos acreditando que nossa experiência, nossos clientes e todo o conhecimento construído ao longo desses anos poderiam novamente se transformar em oportunidades.</p>
+
+            <h3>O curso</h3>
+            <p>Participar do curso foi importante justamente porque trouxe novos conhecimentos e uma visão diferente sobre o empreendedorismo. O curso ajudou a olhar para o negócio de maneira mais organizada, pensando não apenas no produto ou no serviço, mas também em planejamento, mercado, clientes, divulgação, vendas e possibilidades de crescimento. Aprendi que uma boa ideia precisa estar acompanhada de planejamento e que, para uma empresa continuar existindo, é necessário estar sempre atento às mudanças do mercado. Para mim, o principal aprendizado foi entender que recomeçar também faz parte do empreendedorismo. A RichterSat já enfrentou uma pandemia, lockdowns, anos de dificuldades, uma enchente e a paralisação de projetos. Agora estamos novamente abrindo as portas para o mercado. E nosso objetivo é transformar toda essa experiência em uma nova história de crescimento.</p>
+
+            <p style="text-align: center; font-weight: bold; margin-top: 1.5rem; color: var(--primary-color);">
+                RichterSat — um novo começo, construído sobre seis anos de experiência, desafios e aprendizado.
+            </p>
+            <p style="text-align: center; margin-top: 1rem;">
+                Obrigado por estar em nosso site. Seja muito bem-vindo. Desejo negócios maravilhosos para todos nós. Grande abraço!<br>
+                <strong>Luis E. E. Richter.</strong>
+            </p>
+        </div>
+
+        <div class="destaque-container">
+            <div class="destaque-box" style="background: linear-gradient(135deg, #d35400, #e67e22);">
+                <h3>Energia Solar</h3>
+                <p>Sistemas fotovoltaicos e inversores eficientes.</p>
+                <button onclick="mostrarSecao('solar')" class="btn-destaque">☀️ Ver Solar</button>
+            </div>
+            <div class="destaque-box" style="background: linear-gradient(135deg, #002b49, #004085);">
+                <h3>CFTV & Segurança</h3>
+                <p>Câmeras e sistemas de monitoramento.</p>
+                <button onclick="mostrarSecao('cftv')" class="btn-destaque">📷 Ver CFTV</button>
+            </div>
+            <div class="destaque-box" style="background: linear-gradient(135deg, #1b4d3e, #2e8b57);">
+                <h3>Produtos Vilubri</h3>
+                <p>Linha completa e acessórios.</p>
+                <button onclick="mostrarSecao('vibor')" class="btn-destaque">📦 Ver Vilubri</button>
+            </div>
+        </div>
+
+        <h2 id="setores" class="section-header">Setores da Empresa & E-mails Corporativos</h2>
+        <div class="setores-grid">
+            <div class="setor-card">
+                <h3>🏬 Comercial & Vendas</h3>
+                <p>Orçamentos, cotações e propostas.</p>
+                <p><strong>E-mail:</strong> richtersatrs@gmail.com</p>
+                <p><strong>WhatsApp:</strong> (51) 99881-8084</p>
+            </div>
+            <div class="setor-card">
+                <h3>🛠️ Suporte Técnico & Projetos</h3>
+                <p>Instalações, suporte e agendamentos.</p>
+                <p><strong>E-mail:</strong> luis.serrana@gmail.com</p>
+                <p><strong>Atendimento:</strong> (51) 99881-8084</p>
+            </div>
+            <div class="setor-card">
+                <h3>📍 Dados Cadastrais</h3>
+                <p><strong>Razão Social:</strong> RichterSat Tecnologia LTDA</p>
+                <p><strong>CNPJ:</strong> 36.549.300/0001-71</p>
+                <p><strong>Localização:</strong> Guaíba / RS</p>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO SOLAR (solar01.jpeg a solar26.jpeg) -->
+        <div id="solar" class="catalog-section">
+            <div class="seguranca-container" style="margin-bottom: 2rem;">
+                <img src="selo-intelbras.jpg" alt="Selo Intelbras" class="selo-topo" onclick="abrirZoom('selo-intelbras.jpg')" title="Clique para ampliar o selo" onerror="this.onerror=null; this.src='selo-intelbras.JPG';">
+                <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0;">(Clique no selo acima para ampliar)</p>
+            </div>
+            <h2 class="section-header">Sistemas de Energia Solar</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 1; i <= 26; i++) {
+                        let numStr = i < 10 ? '0' + i : i;
+                        let fileName = `solar${numStr}.jpeg`; 
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="Solar ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='solar${numStr}.JPG';">
+                                <div class="card-content">
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ampliar Imagem</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO CFTV (cftv01.jpeg a cftv10.jpeg) -->
+        <div id="cftv" class="catalog-section">
+            <h2 class="section-header">Câmeras e CFTV</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 1; i <= 10; i++) {
+                        let numStr = i < 10 ? '0' + i : i;
+                        let fileName = `cftv${numStr}.jpeg`; 
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="CFTV ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='cftv${numStr}.JPG';">
+                                <div class="card-content">
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ampliar Imagem</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <!-- CATÁLOGO UNIFICADO VILUBRI (Páginas 01 a 80) -->
+        <div id="vibor" class="catalog-section">
+            <h2 class="section-header">Produtos Vilubri — Catálogo Geral (Páginas 01 a 80)</h2>
+            <div class="catalog-grid">
+                <script>
+                    for(let i = 1; i <= 80; i++) {
+                        let numStr = i < 10 ? '0' + i : i;
+                        // Páginas 1 a 67 usam "catalogoXX.jpg", páginas 68 a 80 também usam "catalogoXX.jpg"
+                        let fileName = `catalogo${i}.jpg`;
+                        if (i < 68) {
+                            numStr = i < 10 ? '0' + i : i;
+                            fileName = `catalogo${numStr}.jpg`;
+                        }
+
+                        document.write(`
+                            <div class="catalog-card">
+                                <img src="${fileName}" alt="Página ${i}" loading="lazy" onclick="abrirZoom('${fileName}')" onerror="this.onerror=null; this.src='catalogo${i}.JPG'; this.onerror=function(){this.src='catalogo${i}.jpeg';};">
+                                <div class="card-content">
+                                    <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 5px;">Página ${i}</p>
+                                    <button class="btn-view" onclick="abrirZoom('${fileName}')">🔍 Ampliar Imagem</button>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <h2 id="orcamento" class="section-header">Solicitar Orçamento / Contato</h2>
+        <div class="contato-form">
+            <form action="mailto:richtersatrs@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="nome">Nome Completo / Empresa:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome ou empresa">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail de Contato:</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="text" id="telefone" name="telefone" required placeholder="(51) 99881-8084">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Produtos de Interesse / Código da Página:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva os produtos ou códigos que deseja cotar..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Pedido de Orçamento</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; RichterSat Tecnologia LTDA (CNPJ: 36.549.300/0001-71) — Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
